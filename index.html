@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RufinoMathDigital</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <!-- Header con logo -->
+        <header class="page-header">
+            <div class="header-content">
+                <h1 class="page-title">RufinoMathDigital</h1>
+                <img src="logo.png" alt="Colegio Rufino José Cuervo IED" class="institution-logo">
+            </div>
+        </header>
+
+        <!-- Marco principal -->
+        <div class="main-frame">
+            <div class="container">
+                <!-- Pantalla inicial -->
+                <div id="startScreen" class="screen active">
+                    <div class="start-content">
+                        <div class="app-header">
+                            <h2 class="app-title">⚡ Desafío Matemático ⚡</h2>
+                            <p class="app-subtitle">Elige tu modalidad y duración</p>
+                        </div>
+
+                        <!-- Línea de separación -->
+                        <hr class="separator">
+
+                        <!-- Selección de Modalidad -->
+                        <div class="selection-section">
+                            <h3 class="section-title">Tipo de Operaciones</h3>
+                            <div class="options-grid">
+                                <label class="option-card">
+                                    <input type="radio" name="modality" value="all" checked>
+                                    <span class="option-label">Todas</span>
+                                    <span class="option-icon">🎯</span>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="modality" value="suma">
+                                    <span class="option-label">Sumas</span>
+                                    <span class="option-icon">➕</span>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="modality" value="resta">
+                                    <span class="option-label">Restas</span>
+                                    <span class="option-icon">➖</span>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="modality" value="multiplicacion">
+                                    <span class="option-label">Multiplicaciones</span>
+                                    <span class="option-icon">✖️</span>
+                                </label>
+                                <label class="option-card">
+                                    <input type="radio" name="modality" value="division">
+                                    <span class="option-label">Divisiones</span>
+                                    <span class="option-icon">➗</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Línea de separación -->
+                        <hr class="separator">
+
+                        <!-- Selección de Duración -->
+                        <div class="selection-section">
+                            <h3 class="section-title">Duración del Juego</h3>
+                            <div class="duration-grid">
+                                <label class="duration-card">
+                                    <input type="radio" name="duration" value="30">
+                                    <span class="duration-value">30</span>
+                                    <span class="duration-unit">segundos</span>
+                                </label>
+                                <label class="duration-card">
+                                    <input type="radio" name="duration" value="60" checked>
+                                    <span class="duration-value">60</span>
+                                    <span class="duration-unit">segundos</span>
+                                </label>
+                                <label class="duration-card">
+                                    <input type="radio" name="duration" value="120">
+                                    <span class="duration-value">120</span>
+                                    <span class="duration-unit">segundos</span>
+                                </label>
+                                <label class="duration-card">
+                                    <input type="radio" name="duration" value="180">
+                                    <span class="duration-value">180</span>
+                                    <span class="duration-unit">segundos</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Línea de separación -->
+                        <hr class="separator">
+
+                        <!-- Resumen de configuración -->
+                        <div class="config-summary">
+                            <p id="configText">Modalidad: Todas las operaciones | Duración: 60 segundos</p>
+                        </div>
+
+                        <button id="startBtn" class="btn-primary">Comenzar</button>
+                    </div>
+                </div>
+
+                <!-- Pantalla de cuenta regresiva -->
+                <div id="countdownScreen" class="screen">
+                    <div class="countdown-content">
+                        <p>Preparándose...</p>
+                        <div id="countdownNumber" class="countdown-number">3</div>
+                    </div>
+                </div>
+
+                <!-- Pantalla del juego -->
+                <div id="gameScreen" class="screen">
+                    <div class="game-header">
+                        <div class="timer">
+                            <span class="timer-label">Tiempo:</span>
+                            <span id="timeDisplay" class="timer-value">60</span>s
+                        </div>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Nivel:</span>
+                                <span id="levelDisplay" class="stat-value">1</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">✅</span>
+                                <span id="correctDisplay" class="stat-value">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">❌</span>
+                                <span id="incorrectDisplay" class="stat-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="separator">
+
+                    <div class="game-content">
+                        <div class="operation-card">
+                            <div id="operationDisplay" class="operation">5 + 3 = ?</div>
+                        </div>
+
+                        <div class="input-section">
+                            <input 
+                                type="number" 
+                                id="answerInput" 
+                                class="answer-input" 
+                                placeholder="Tu respuesta"
+                                autocomplete="off"
+                            >
+                            <button id="submitBtn" class="btn-submit">Enviar</button>
+                        </div>
+
+                        <div id="feedbackMessage" class="feedback-message"></div>
+                    </div>
+                </div>
+
+                <!-- Pantalla de resultados -->
+                <div id="resultsScreen" class="screen">
+                    <div class="results-content">
+                        <h2>¡Se acabó el tiempo!</h2>
+                        
+                        <hr class="separator">
+
+                        <div class="results-stats">
+                            <div class="result-item">
+                                <span class="result-label">✅ Respuestas Correctas:</span>
+                                <span id="finalCorrect" class="result-value">0</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">❌ Respuestas Incorrectas:</span>
+                                <span id="finalIncorrect" class="result-value">0</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">🎯 Puntuación Total:</span>
+                                <span id="finalScore" class="result-value score">0</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">📈 Nivel Alcanzado:</span>
+                                <span id="finalLevel" class="result-value">1</span>
+                            </div>
+                        </div>
+
+                        <hr class="separator">
+
+                        <div class="results-feedback" id="resultsFeedback"></div>
+
+                        <button id="restartBtn" class="btn-primary">Intentar de Nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
